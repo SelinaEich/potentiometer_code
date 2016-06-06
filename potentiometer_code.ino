@@ -15,7 +15,7 @@ Servo myServo;                      // compass servo
 
 /*Potentiometer Variables*/
 int startingBlock; // notes starting block position 0 or 1
-int buttonState = 0;
+int buttonState;
 float startingPosX; // starting x-position (will vary depending on selected starting position) (NEW)
 float startingPosY; // starting y-position (will vary depending on selected starting position) (NEW)
 
@@ -26,8 +26,8 @@ void setup() {
 }
 
 void loop() {
-  int buttonState = digitalRead(startPin);
-  int startingBlock = floor(analogRead(PotPin) / 129);
+  buttonState = digitalRead(startPin);
+  startingBlock = floor(analogRead(PotPin) / 129);
   Serial.print("Button State:"); Serial.print("\t"); Serial.println(buttonState);
   Serial.print("Starting Block:"); Serial.print("\t"); Serial.println(startingBlock);
   start();
@@ -42,6 +42,7 @@ void start() {
     if (startingBlock == 0){ // Position A1
       startingPosX = -99;
       startingPosY = 154;
+      Serial.println("I am in state 1");
     }
     else if (startingBlock == 1){ // Position A2
       startingPosX = -121;
@@ -72,8 +73,7 @@ void start() {
       startingPosY = 132;
     }
   }
-  else if (buttonState == 0){
-    startingBlock = floor(analogRead(PotPin) / 129);
+  else if(buttonState == 0) {
     if (startingBlock == 0){ // Position C1
       startingPosX = -99;
       startingPosY = -110;
