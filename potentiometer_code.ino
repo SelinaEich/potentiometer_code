@@ -10,7 +10,7 @@
 #define deltaSw 2.4737 // (in inches per reed trigger) Circumference/#Magnets or 2*pi*wheelRaduis/numMagnets, MUST BE A DECIMAL NUMBER!
 #define PotPin A0
 #define buttPin 5 //Button to start executing code is in pin 5
-
+#define startPin 0
 Servo myServo;                      // compass servo
 
 /*Potentiometer Variables*/
@@ -25,7 +25,7 @@ void setup() {
 
 void loop() {
   int buttonState = digitalRead(startPin);
-  int startingBlock = floor(analogRead(PotPin) / 129)
+  int startingBlock = floor(analogRead(PotPin) / 129);
   Serial.print("Button State:"); Serial.print("\t"); Serial.println(buttonState);
   Serial.print("Starting Block:"); Serial.print("\t"); Serial.println(startingBlock);
   delay(1);
