@@ -26,7 +26,7 @@ void setup() {
 void loop() {
   int buttonState = digitalRead(startPin);
   int startingBlock = floor(analogRead(PotPin) / 129)
-   Serial.println(buttonState);
-  Serial.println(startingBlock);
+  Serial.print("Button State:"); Serial.print("\t"); Serial.println(buttonState);
+  Serial.print("Starting Block:"); Serial.print("\t"); Serial.println(startingBlock);
   delay(1);
 }
