@@ -15,17 +15,18 @@ Servo myServo;                      // compass servo
 
 /*Potentiometer Variables*/
 int startingBlock; // notes starting block position 0 or 1
+int buttonState = 0;
 
 void setup() {
-  // put your setup code here, to run once:
-  
   Serial.begin(9600);
-
+  pinMode(startPin,INPUT_PULLUP);
   pinMode(PotPin, INPUT);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  startingBlock = analogRead(PotPin) / 513; 
-  Serial.print("Potentiometer:"); Serial.print("\t"); Serial.println(PotPin);
+  int buttonState = digitalRead(startPin);
+  int startingBlock = floor(analogRead(PotPin) / 129)
+   Serial.println(buttonState);
+  Serial.println(startingBlock);
+  delay(1);
 }
